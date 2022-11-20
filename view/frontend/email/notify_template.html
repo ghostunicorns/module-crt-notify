@@ -1,0 +1,14 @@
+<!--@subject Email Subject @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Email Logo Image"}
+@-->
+{{template config_path="design/email/header_template"}}
+
+<div>
+    <h1>Fallimento su Processo - {{var process}}</h1>
+
+    <p>Verificare stato dell'attività: {{var activity}} nelle sezioni:</p>
+    <p>Reports -> All Activities oppure Reports -> All Entities</p>
+</div>
+{{template config_path="design/email/footer_template"}}

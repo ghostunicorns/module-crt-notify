@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Logger start -->
+    <virtualType name="GhostUnicorns\CrtNotify\Logger\Virtual"
+                 type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="name" xsi:type="string">GhostUnicorns::CrtNotify</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">
+                    GhostUnicorns\CrtBase\Logger\Handler\Console
+                </item>
+                <item name="system" xsi:type="object">
+                    GhostUnicorns\CrtNotify\Logger\Handler\File\Virtual
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="GhostUnicorns\CrtNotify\Logger\Handler\File\Virtual"
+                 type="GhostUnicorns\CrtBase\Logger\Handler\File">
+        <arguments>
+            <argument name="config" xsi:type="object">
+                GhostUnicorns\CrtNotify\Model\Config
+            </argument>
+            <argument name="fileName" xsi:type="string">
+                /var/log/crt-notify.log
+            </argument>
+        </arguments>
+    </virtualType>
+    <!-- Logger end -->
+</config>
